@@ -1,0 +1,1 @@
+Blender 4.5.14 LTS (Linux x64). Запуск: blender -b -P build_thief.py ; blender -b -P build_props.py. Пути к исходным моделям (папки user/, dl/, ph/) задаются в начале скриптов.

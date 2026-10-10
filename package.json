@@ -1,0 +1,1 @@
+{"name":"hapai","private":true,"workspaces":["apps/*","packages/*"],"scripts":{"dev:client":"npm run dev -w @hapai/client","dev:server":"npm run dev -w @hapai/server","build":"npm run build -w @hapai/client","start:server":"npm run start -w @hapai/server","test":"node --test tests/*.test.mjs"},"engines":{"node":">=22"}}

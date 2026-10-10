@@ -1,0 +1,1 @@
+{"name":"@hapai/server","version":"2.0.0","type":"module","private":true,"scripts":{"start":"node index.mjs","dev":"node --watch index.mjs"},"dependencies":{"socket.io":"^4.8.1","@hapai/shared":"*"}}

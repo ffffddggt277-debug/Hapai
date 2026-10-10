@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: hapai-server
+    runtime: node
+    plan: free
+    buildCommand: npm ci --workspace=@hapai/server --workspace=@hapai/shared --include-workspace-root
+    startCommand: npm run start:server
+    healthCheckPath: /health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: FRONTEND_URL
+        sync: false
