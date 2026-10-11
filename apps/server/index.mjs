@@ -18,8 +18,9 @@ const BOT_NAMES = ['Лис', 'Бонни', 'Шустрый', 'Тень', 'Кот
 const httpServer = http.createServer((req, res) => {
   res.setHeader('Content-Type', 'application/json');
   res.setHeader('Access-Control-Allow-Origin', '*');
-  if (req.url === '/health') res.end(JSON.stringify({ ok: true, version: VERSION }));
-  else if (req.url === '/stats') res.end(JSON.stringify({ rooms: rooms.size, connections: io.engine.clientsCount }));
+  const path = (req.url || '/').split('?')[0].replace(/\/+$/, '') || '/';
+  if (path === '/health' || path === '/') res.end(JSON.stringify({ ok: true, game: 'HAPAI', version: VERSION }));
+  else if (path === '/stats') res.end(JSON.stringify({ rooms: rooms.size, connections: io.engine.clientsCount }));
   else { res.writeHead(404); res.end('{"error":"not found"}'); }
 });
 const io = new Server(httpServer, {
