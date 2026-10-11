@@ -7,7 +7,7 @@ import {
 } from '@hapai/shared';
 
 const PORT = process.env.PORT || 10000;
-const origins = (process.env.FRONTEND_URL || 'http://localhost:3000,http://127.0.0.1:3000').split(',').map(s => s.trim()).filter(Boolean);
+const origins = (process.env.FRONTEND_URL || 'http://localhost:3000,http://127.0.0.1:3000').split(',').map(s => s.trim().replace(/\/+$/, '')).filter(Boolean);
 const TICK = 30, SEND_EVERY = 2;
 // только для тестов/записи трейлера: укороченный раунд
 if (process.env.ROUND_SECONDS) RULES.round = Math.max(40, +process.env.ROUND_SECONDS || RULES.round);
@@ -373,3 +373,4 @@ setInterval(() => {
 }, 1000 / TICK);
 setInterval(() => { for (const [token, s] of sessions) if (!rooms.has(s.room) || !s.player.connected && now() - s.player.goneAt > 45) sessions.delete(token); }, 30000).unref();
 httpServer.listen(PORT, '0.0.0.0', () => console.log(`HAPAI ${VERSION} server :${PORT}; origins=${origins.join(',')}`));
+
